@@ -155,6 +155,21 @@ import Footer from '../../components/Footer.astro';
   <Footer />
 </Layout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pills = document.querySelectorAll('.pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        
+        // Since we don't have backend filtering yet, we can optionally 
+        // add visual feedback like a smooth scroll or layout shift.
+      });
+    });
+  });
+</script>
+
 <style>
   /* ── Base ── */
   .resources-page {
