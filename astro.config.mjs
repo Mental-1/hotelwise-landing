@@ -6,6 +6,6 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: "https://mental-1.github.io",
-  base: "/hotelwise-landing",
+
   integrations: [react()]
 });

@@ -21,7 +21,7 @@ import Button from '../components/Button';
       </div>
       <div class="hero-image">
         <div class="image-placeholder">
-          <span>📸</span>
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&w=800&q=80" alt="HotelWise Team" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />
         </div>
       </div>
       </section>
@@ -46,21 +46,29 @@ import Button from '../components/Button';
 
     <!-- Our Story -->
     <section class="story-section container">
-      <h2 class="story-heading">Hospitality deserved better.<br/>So we built it.</h2>
-      <div class="story-grid">
-        <div class="story-text">
-          <p>Hotels across East Africa were stuck choosing between expensive enterprise systems designed for global chains and fragile spreadsheets held together with willpower. Neither option respected the reality of running a 50-room lodge or a standalone restaurant.</p>
-          <p>We started HotelWise in Kenya with a simple thesis: one well-built platform that covers every department, configured in weeks not months, at a price that makes sense for independent properties.</p>
+      <div class="story-header-content">
+        <div class="pill-badge" style="background: transparent; padding: 0; margin-bottom: 24px;">
+          <span class="pill-icon" style="background: #9bd0ff;"></span> Our story
         </div>
-        <div class="story-images">
-          <div class="image-placeholder tall">
-            <span>📸</span>
+        <h2 class="story-heading" style="margin-bottom: 32px; font-weight: 400; font-family: var(--font-sans);">Hospitality deserved better.<br/>So we built it.</h2>
+      </div>
+      <div class="story-card" style="background: #fcf18d; padding: 36px 40px; border-radius: 8px;">
+        <div class="story-grid" style="margin-bottom: 0; gap: 48px; align-items: center;">
+          <div class="story-text" style="color: #1a1a1a;">
+            <p style="color: inherit;">Hotels across East Africa were stuck choosing between expensive enterprise systems designed for global chains and fragile spreadsheets held together with willpower. Neither option respected the reality of running a 50-room lodge or a standalone restaurant.</p>
+            <p style="color: inherit;">We started HotelWise in Kenya with a simple thesis: one well-built platform that covers every department, configured in weeks not months, at a price that makes sense for independent properties.</p>
+            <p style="color: inherit;">From day one, we've been driven to cut through the complexity and give hoteliers something they rarely get from tech: momentum. Because when hoteliers have momentum, everything else follows — smoother days, stronger teams, and guests who can't wait to return.</p>
+          </div>
+          <div class="story-images">
+            <div class="image-placeholder" style="aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: transparent;">
+              <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80" alt="Napkin wireframe sketch" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Quick Facts -->
-      <div class="quick-facts">
+      <div class="quick-facts" style="margin-top: 64px;">
         <h3>Quick facts</h3>
         <div class="facts-grid">
           <div class="fact-item">
@@ -97,19 +105,30 @@ import Button from '../components/Button';
     <section class="people-section container">
       <div class="people-header">
         <div>
+          <div class="pill-badge" style="background: transparent; padding: 0; margin-bottom: 24px;">
+            <span class="pill-icon" style="background: #9bd0ff;"></span> Our people
+          </div>
           <h2>Built by people who've<br/>been there</h2>
         </div>
         <div class="people-intro">
-          <p>Our team blends engineers, former hotel managers, and hospitality consultants. Every feature ships because someone on the team has lived the problem it solves — not because a roadmap said so.</p>
+          <p>We've run hotels, worked front desks, built software from scratch, and kept calm through the chaos that comes with it.</p>
+          <p style="margin-top: 16px;">Today, we're a team of technologists, designers, engineers, and hoteliers, working together to untangle the mess that's been holding this industry back.</p>
         </div>
       </div>
-      <div class="people-images">
-        <div class="image-placeholder wide"><span>📸</span></div>
-        <div class="image-placeholder wide"><span>📸</span></div>
-      </div>
-      <div class="people-quote">
-        <blockquote>"Every property we onboard teaches us something new. That feedback loop is why HotelWise keeps getting sharper."</blockquote>
-        <p class="quote-attribution">— Engineering Team, Suluhu Technologies</p>
+      <div class="people-card">
+        <div class="people-card-left">
+          <div class="people-card-badge">
+            <span style="display: inline-block; width: 12px; height: 12px; background: #1a1a1a; border-radius: 3px; margin-right: 8px;"></span> How we work
+          </div>
+          <h3 class="people-card-title">Installed locally, by design</h3>
+          <div class="people-card-body">
+            <p>HotelWise installs directly onto your own hardware. Your data never leaves your property unless you say so — no cloud dependency, no third-party servers, no guesswork about who has access.</p>
+            <p>It means complete control over privacy, uptime that doesn't depend on your internet, and the convenience of a system that's always right there when you need it.</p>
+          </div>
+        </div>
+        <div class="people-card-right">
+          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Local team working" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
       </div>
     </section>
 
@@ -168,7 +187,7 @@ import Button from '../components/Button';
       </div>
       <div class="press-row">
         <h3>About HotelWise</h3>
-        <p class="press-blurb">HotelWise is hotel management software developed by Suluhu Technologies in Kenya. It serves hotels, restaurants, clubs, and wine & spirit outlets across East Africa with an all-in-one platform covering Front Desk, POS, Housekeeping, Stores, Accounting, and more.</p>
+        <p class="press-blurb">HotelWise is hotel software built around how a hotel actually runs. Serving properties across East Africa, it unifies everything from front desk to back office into one real-time system.</p>
       </div>
     </section>
 
@@ -340,7 +359,7 @@ import Button from '../components/Button';
 
   /* Quick Facts */
   .quick-facts h3 {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     margin-bottom: var(--spacing-lg);
     color: var(--text-primary);
   }
@@ -385,8 +404,9 @@ import Button from '../components/Button';
   }
   .people-header h2 {
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.2;
+    margin: 0;
   }
   .people-intro p {
     font-size: 1.0625rem;
@@ -394,24 +414,50 @@ import Button from '../components/Button';
     line-height: 1.7;
     margin: 0;
   }
-  .people-images {
+  .people-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
-    margin-bottom: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 420px;
   }
-  .people-quote blockquote {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: var(--text-primary);
-    margin: 0 0 12px 0;
-    text-align: left;
+  .people-card-left {
+    background: #BFDEFF;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
   }
-  .quote-attribution {
+  .people-card-badge {
+    display: inline-flex;
+    align-items: center;
     font-size: 0.875rem;
-    color: var(--text-tertiary);
-    margin: 0;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+  .people-card-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0 0 auto 0;
+  }
+  .people-card-body {
+    margin-top: auto;
+  }
+  .people-card-body p {
+    font-size: 0.9375rem;
+    color: #1a1a1a;
+    line-height: 1.65;
+    margin: 0 0 12px 0;
+  }
+  .people-card-body p:last-child {
+    margin-bottom: 0;
+  }
+  .people-card-right {
+    overflow: hidden;
+  }
+  .people-card-right img {
+    display: block;
   }
 
 
@@ -576,8 +622,11 @@ import Button from '../components/Button';
     .people-header, .backed-header, .values-inner {
       grid-template-columns: 1fr;
     }
-    .people-images {
+    .people-card {
       grid-template-columns: 1fr;
+    }
+    .people-card-right {
+      min-height: 280px;
     }
     .press-row {
       grid-template-columns: 1fr;

@@ -6,21 +6,21 @@ import Button from '../components/Button';
 
 // 12 placeholder case studies for the grid
 const caseStudies = [
-  { id: 1, type: "Hotel", name: "The Nairobi Landmark", quote: "HotelWise centralized our operations, cutting front desk waiting times by 40%.", imgColor: "#B5D5C5" },
-  { id: 2, type: "Resort", name: "Diani Beach Resort", quote: "Managing bookings across 5 different properties used to be a nightmare. Now it's a breeze.", imgColor: "#E3C9B8" },
-  { id: 3, type: "Lodge", name: "Mara Safari Lodge", quote: "Offline mode saves us when internet goes down in the bush. Incredible reliability.", imgColor: "#C5CBE3" },
-  { id: 4, type: "Boutique", name: "The Villa Karen", quote: "Guest profiles help us personalize every stay. We've seen a 30% jump in return guests.", imgColor: "#E3E0C5" },
-  { id: 5, type: "Chain", name: "City Plaza Hotels", quote: "Unified accounting across 10 locations. Month-end reconciliation takes hours, not days.", imgColor: "#E3B8B8" },
-  { id: 6, type: "Resort", name: "Zanzibar Ocean View", quote: "The POS connects instantly to guest folios. No more lost paper chits from the bar.", imgColor: "#C5E3D8" },
+  { id: 1, type: "Hotel", name: "The Nairobi Landmark", quote: "HotelWise centralized our operations, cutting front desk waiting times by 40%.", imgColor: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80')" },
+  { id: 2, type: "Resort", name: "Diani Beach Resort", quote: "Managing bookings across 5 different properties used to be a nightmare. Now it's a breeze.", imgColor: "url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80')" },
+  { id: 3, type: "Lodge", name: "Mara Safari Lodge", quote: "Offline mode saves us when internet goes down in the bush. Incredible reliability.", imgColor: "url('https://images.unsplash.com/photo-1522771731470-ea433734e24c?auto=format&fit=crop&w=600&q=80')" },
+  { id: 4, type: "Boutique", name: "The Villa Karen", quote: "Guest profiles help us personalize every stay. We've seen a 30% jump in return guests.", imgColor: "url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&q=80')" },
+  { id: 5, type: "Chain", name: "City Plaza Hotels", quote: "Unified accounting across 10 locations. Month-end reconciliation takes hours, not days.", imgColor: "url('https://images.unsplash.com/photo-1542314831-c6a4d27ce668?auto=format&fit=crop&w=600&q=80')" },
+  { id: 6, type: "Resort", name: "Zanzibar Ocean View", quote: "The POS connects instantly to guest folios. No more lost paper chits from the bar.", imgColor: "url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80')" },
   
   // We'll inject the CTA banner after item 6 in the layout loop
   
-  { id: 7, type: "Hotel", name: "Entebbe Transit Hotel", quote: "Automated night audits mean our staff can actually focus on late check-ins.", imgColor: "#D8C5E3" },
-  { id: 8, type: "Lodge", name: "Rift Valley Escapes", quote: "Housekeeping sync is flawless. Rooms are turned over 20% faster on average.", imgColor: "#E3D5B8" },
-  { id: 9, type: "Boutique", name: "Kigali Heights Inn", quote: "The cleanest, easiest interface we've ever used. Training new staff takes one afternoon.", imgColor: "#B8E3CD" },
-  { id: 10, type: "Hotel", name: "Mombasa Gateway", quote: "Channel manager integration means zero double bookings since we switched.", imgColor: "#D8E3B8" },
-  { id: 11, type: "Chain", name: "Serena Suites", quote: "Enterprise reporting gives our board real-time visibility into daily revenue.", imgColor: "#B8CBE3" },
-  { id: 12, type: "Resort", name: "Lake Naivasha Spa", quote: "Retail POS handles our spa and gift shop seamlessly alongside room billing.", imgColor: "#E3B8D5" },
+  { id: 7, type: "Hotel", name: "Entebbe Transit Hotel", quote: "Automated night audits mean our staff can actually focus on late check-ins.", imgColor: "url('https://images.unsplash.com/photo-1551882547-ff40c0d1398c?auto=format&fit=crop&w=600&q=80')" },
+  { id: 8, type: "Lodge", name: "Rift Valley Escapes", quote: "Housekeeping sync is flawless. Rooms are turned over 20% faster on average.", imgColor: "url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=600&q=80')" },
+  { id: 9, type: "Boutique", name: "Kigali Heights Inn", quote: "The cleanest, easiest interface we've ever used. Training new staff takes one afternoon.", imgColor: "url('https://images.unsplash.com/photo-1535827841776-24afc1e255ac?auto=format&fit=crop&w=600&q=80')" },
+  { id: 10, type: "Hotel", name: "Mombasa Gateway", quote: "Channel manager integration means zero double bookings since we switched.", imgColor: "url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80')" },
+  { id: 11, type: "Chain", name: "Serena Suites", quote: "Enterprise reporting gives our board real-time visibility into daily revenue.", imgColor: "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80')" },
+  { id: 12, type: "Resort", name: "Lake Naivasha Spa", quote: "Retail POS handles our spa and gift shop seamlessly alongside room billing.", imgColor: "url('https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=600&q=80')" },
 ];
 ---
 
@@ -107,7 +107,7 @@ const caseStudies = [
             return (
               <>
                 <div class="case-card card">
-                  <div class="case-image" style={`background-color: ${caseItem.imgColor};`}>
+                  <div class="case-image" style={`background-image: ${caseItem.imgColor}; background-size: cover; background-position: center;`}>
                     <span class="case-type-badge">{caseItem.type}</span>
                   </div>
                   <div class="case-body">

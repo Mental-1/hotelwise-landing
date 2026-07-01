@@ -4,13 +4,12 @@ import Button from './Button';
 <header class="header">
   <div class="container header-inner">
     <a href="/" class="logo">
-      <span class="logo-icon">H</span>
-      <span class="logo-text">HotelWise</span>
+      <img src="/hotelwise-logo.webp" alt="HotelWise Logo" class="brand-logo" />
     </a>
     
     <!-- Desktop Navigation -->
     <nav class="nav desktop-only">
-      <a href="/features">Product</a>
+      <a href="/features">Features</a>
       <a href="/pricing">Pricing</a>
       <a href="/customers">Customers</a>
       <a href="/resources">Resources</a>
@@ -33,7 +32,7 @@ import Button from './Button';
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu hidden">
     <nav class="mobile-nav">
-      <a href="/features">Product</a>
+      <a href="/features">Features</a>
       <a href="/pricing">Pricing</a>
       <a href="/customers">Customers</a>
       <a href="/resources">Resources</a>
@@ -95,20 +94,13 @@ import Button from './Button';
   .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--text-primary);
   }
-  .logo-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: var(--text-primary);
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
+  .brand-logo {
+    height: 96px;
+    width: auto;
+    object-fit: contain;
   }
   .nav {
     display: flex;
