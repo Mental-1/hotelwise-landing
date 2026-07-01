@@ -32,11 +32,26 @@ import Button from './Button';
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu hidden">
     <nav class="mobile-nav">
-      <a href="/features">Features</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/customers">Customers</a>
-      <a href="/resources">Resources</a>
-      <a href="/about">About</a>
+      <a href="/features" class="mobile-nav-link">
+        <span>Features</span>
+        <span class="nav-arrow">&rarr;</span>
+      </a>
+      <a href="/pricing" class="mobile-nav-link">
+        <span>Pricing</span>
+        <span class="nav-arrow">&rarr;</span>
+      </a>
+      <a href="/customers" class="mobile-nav-link">
+        <span>Customers</span>
+        <span class="nav-arrow">&rarr;</span>
+      </a>
+      <a href="/resources" class="mobile-nav-link">
+        <span>Resources</span>
+        <span class="nav-arrow">&rarr;</span>
+      </a>
+      <a href="/about" class="mobile-nav-link">
+        <span>About</span>
+        <span class="nav-arrow">&rarr;</span>
+      </a>
       <hr class="mobile-divider" />
       <a href="/contact">Contact Sales</a>
     </nav>
@@ -78,9 +93,6 @@ import Button from './Button';
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-color);
   }
   .header-inner {
     display: flex;
@@ -89,7 +101,9 @@ import Button from './Button';
     height: 64px;
     position: relative;
     z-index: 101;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
   }
   .logo {
     display: flex;
@@ -101,6 +115,12 @@ import Button from './Button';
     height: 96px;
     width: auto;
     object-fit: contain;
+  }
+  @media (max-width: 1000px) {
+    .brand-logo { height: 64px; }
+  }
+  @media (max-width: 480px) {
+    .brand-logo { height: 48px; }
   }
   .nav {
     display: flex;
@@ -168,51 +188,68 @@ import Button from './Button';
     .header-actions {
       gap: 16px;
     }
-    /* Mobile Menu Overlay */
+    /* Mobile Menu Overlay — reverse bottom sheet */
     .mobile-menu {
-      display: block; /* Toggled via .hidden class from JS */
+      display: block;
       position: fixed;
-      top: 64px; /* Below header */
+      top: 64px;
       left: 0;
       right: 0;
       bottom: 0;
       background: white;
       z-index: 99;
       padding: var(--spacing-xl) var(--spacing-lg);
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(-100%);
+      transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
       pointer-events: none;
       overflow-y: auto;
     }
     .mobile-menu.active {
-      opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
     }
     .mobile-nav {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-xl);
-      padding-top: var(--spacing-md);
+      gap: var(--spacing-lg);
+      padding-top: var(--spacing-lg);
     }
-    .mobile-nav a {
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text-primary);
       text-decoration: none;
+      padding: 12px 0;
+    }
+    .nav-arrow {
+      font-size: 1.25rem;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+    }
+    .mobile-nav-link:hover .nav-arrow {
+      transform: translateX(4px);
+    }
+    .mobile-nav > a:not(.mobile-nav-link) {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 12px 0;
     }
     .mobile-divider {
       border: none;
       border-top: 1px solid var(--border-color);
       margin: 8px 0;
     }
-  }
-
-  /* Handle very small screens */
-  @media (max-width: 480px) {
-    .logo-text {
-      display: none;
+    /* Demo button smaller on mobile */
+    .header-actions a[href="/demo"] {
+      padding: 6px 12px !important;
+      font-size: 0.8125rem !important;
     }
   }
+
 </style>
