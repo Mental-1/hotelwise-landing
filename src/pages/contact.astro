@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button';
+---
+
+<Layout title="Contact Support & Sales">
+  <Header />
+  <main class="contact-page">
+    <div class="container contact-layout">
+      <div class="contact-info">
+        <h1>Contact us</h1>
+        <p>Have questions about HotelWise? Need support for your property or want to discuss a partnership? We're here to help.</p>
+        
+        <div class="contact-methods">
+          <div class="method">
+            <h3>Support</h3>
+            <p>For existing customers who need help.</p>
+            <a href="mailto:support@hotelwise.co.ke">support@hotelwise.co.ke</a>
+          </div>
+          <div class="method">
+            <h3>Partnerships</h3>
+            <p>For integrators and hospitality consultants.</p>
+            <a href="mailto:partners@hotelwise.co.ke">partners@hotelwise.co.ke</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <form class="contact-form card">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Work Email</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">How can we help?</label>
+            <textarea id="message" rows="4" required></textarea>
+          </div>
+          <Button variant="primary" className="submit-btn" client:load>Send Message</Button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  
+  gsap.from(".contact-info", { x: -30, opacity: 0, duration: 0.8, ease: "power3.out" });
+  gsap.from(".contact-form-container", { x: 30, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.2 });
+</script>
+
+<style>
+  .contact-page {
+    padding: var(--spacing-xl) 0;
+  }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .contact-info h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .contact-info p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+  }
+  .contact-methods {
+    margin-top: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .method h3 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }
+  .method p {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+  }
+  .method a {
+    color: var(--accent-primary);
+    font-weight: 500;
+  }
+  .method a:hover {
+    text-decoration: underline;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) !important;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .form-group input, .form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+  }
+  :global(.submit-btn) {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+    padding: 12px !important;
+  }
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

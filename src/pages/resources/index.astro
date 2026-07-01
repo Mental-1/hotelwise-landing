@@ -1,0 +1,557 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Resources | HotelWise">
+  <Header />
+  
+  <div class="resources-page">
+    <!-- Hero Section -->
+    <div class="hero-wrapper">
+      <section class="resources-hero">
+        <div class="container text-center">
+          <h1>Looking for insights to grow your business? Start here.</h1>
+          <div class="search-container">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" placeholder="Search" class="search-input" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filter-pills">
+          <button class="pill active">All</button>
+          <button class="pill">Articles</button>
+          <button class="pill">Guides</button>
+          <button class="pill">Ebooks</button>
+          <button class="pill">Templates</button>
+          <button class="pill">Videos</button>
+          <button class="pill">Podcast</button>
+          <button class="pill">Webinars</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Resources -->
+    <section class="section-container container top-resources">
+      <h2 class="section-title">Top resources</h2>
+      <div class="grid-layout-2-1">
+        <!-- Large Card -->
+        <a href="#" class="featured-card dark">
+          <div class="featured-content">
+            <h3>Data shapes decisions.</h3>
+            <div class="report-meta">
+              <span class="report-year">2026 report</span>
+              <p class="report-title">The State of Independent Hotels</p>
+            </div>
+            <div class="brand">
+              <span class="logo-icon">H</span> HotelWise
+            </div>
+          </div>
+          <div class="featured-visual">
+             <div class="book-mockup">
+               <div class="mockup-header">
+                 <span class="logo-icon">H</span> HotelWise
+               </div>
+               <div class="mockup-body">
+                 The State of Independent Hotels
+               </div>
+               <div class="mockup-badge">
+                 20<br/>26
+               </div>
+             </div>
+          </div>
+        </a>
+
+        <!-- Stacked Small Cards -->
+        <div class="stacked-cards">
+          <a href="#" class="small-card">
+            <div class="img-placeholder bg-blue">
+               <span>Guide visual</span>
+            </div>
+            <div class="card-body">
+              <span class="tag tag-green">Guide</span>
+              <h4>The complete guide to hotel advertising: Strategies, channels, an...</h4>
+              <span class="read-link">↳ Read article</span>
+            </div>
+          </a>
+          <a href="#" class="small-card">
+            <div class="img-placeholder bg-dark">
+               <span>Story visual</span>
+            </div>
+            <div class="card-body">
+              <span class="tag tag-green">Customer story</span>
+              <h4>Reviving hidden gems into design-forward destinations: The French...</h4>
+              <span class="read-link">↳ Read customer story</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newly Published -->
+    <section class="section-container container newly-published">
+      <h2 class="section-title">Newly published</h2>
+      <div class="grid-layout-1-2">
+        <!-- Stacked Small Cards -->
+        <div class="stacked-cards border-right">
+          <a href="#" class="small-card">
+            <div class="img-placeholder bg-cream">
+               <span>Pricing visual</span>
+            </div>
+            <div class="card-body">
+              <span class="tag tag-green">Guide</span>
+              <h4>A guide to designing high-performing rate plans</h4>
+              <span class="read-link">↳ Read More</span>
+            </div>
+          </a>
+          <a href="#" class="small-card">
+            <div class="img-placeholder bg-cream">
+               <span>Payments visual</span>
+            </div>
+            <div class="card-body">
+              <span class="tag tag-green">Guide</span>
+              <h4>A guide to hotel payment processing</h4>
+              <span class="read-link">↳ Read More</span>
+            </div>
+          </a>
+          <a href="#" class="small-card">
+            <div class="img-placeholder bg-yellow">
+               <span>Marketing visual</span>
+            </div>
+            <div class="card-body">
+              <span class="tag tag-green">Guide</span>
+              <h4>A guide to hotel metasearch marketing</h4>
+              <span class="read-link">↳ Read More</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Large Feature Card -->
+        <a href="#" class="featured-card light">
+          <div class="visual-large">
+            <div class="brand-overlay">
+              <span class="logo-icon">H</span> HotelWise
+            </div>
+            <div class="visual-text">
+              Housekeeping standard operating procedures
+            </div>
+          </div>
+          <div class="content-bottom">
+            <span class="tag tag-green">Guide</span>
+            <h3>Housekeeping standard operating procedures</h3>
+            <span class="read-link">↳ Read More</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Base ── */
+  .resources-page {
+    background: #ffffff;
+    padding-bottom: 120px;
+  }
+  
+  /* ── Hero ── */
+  .hero-wrapper {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(to bottom, #dbeafe 0%, #ffffff 100%);
+  }
+  .hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: 80px 80px;
+    background-position: center top;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .resources-hero {
+    padding: 100px 0 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
+  }
+  .resources-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #111;
+  }
+  .search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    color: #666;
+  }
+  .search-input {
+    width: 100%;
+    padding: 20px 20px 20px 60px;
+    font-size: 1.125rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    outline: none;
+    color: #333;
+    transition: box-shadow 0.2s;
+  }
+  .search-input:focus {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  .search-input::placeholder {
+    color: #999;
+  }
+
+  /* ── Filters ── */
+  .filters-section {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .filter-pills {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px; /* For scrollbar if needed */
+  }
+  .filter-pills::-webkit-scrollbar {
+    height: 0px;
+  }
+  .pill {
+    padding: 8px 16px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .pill:hover {
+    border-color: #111;
+  }
+  .pill.active {
+    background: #2b2622;
+    color: #fff;
+    border-color: #2b2622;
+  }
+
+  /* ── Layouts ── */
+  .section-container {
+    padding-top: 60px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 32px;
+    color: #111;
+  }
+  
+  .grid-layout-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .grid-layout-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* ── Featured Card (Dark - Top Resources) ── */
+  .featured-card {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: opacity 0.2s;
+  }
+  .featured-card:hover {
+    opacity: 0.95;
+  }
+  .featured-card.dark {
+    background: #232015;
+    color: #fff;
+  }
+  .featured-content {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .featured-content h3 {
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 60px;
+  }
+  .report-meta {
+    margin-bottom: 40px;
+  }
+  .report-year {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.6);
+  }
+  .report-title {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-top: 8px;
+  }
+  .brand {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    color: #232015; /* Invert color */
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  /* Mockup Visual */
+  .featured-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .book-mockup {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 3/4;
+    background: #fff899;
+    color: #111;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .mockup-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mockup-header .logo-icon {
+    background: #111;
+    color: #fff899;
+  }
+  .mockup-body {
+    margin-top: auto;
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 80%;
+  }
+  .mockup-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background: #111;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+
+  /* ── Stacked Small Cards ── */
+  .stacked-cards {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+  .stacked-cards.border-right {
+    border-left: none;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  .small-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    flex: 1;
+    transition: background 0.2s;
+  }
+  .small-card:last-child {
+    border-bottom: none;
+  }
+  .small-card:hover {
+    background: #f9fafb;
+  }
+  
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.4);
+    border-right: 1px solid rgba(0,0,0,0.05);
+  }
+  .bg-blue { background: #e0f2fe; }
+  .bg-dark { background: #232015; color: rgba(255,255,255,0.4); }
+  .bg-cream { background: #fdfbf7; }
+  .bg-yellow { background: #fef08a; }
+
+  .card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .tag-green {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .small-card h4 {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: #111;
+  }
+  .read-link {
+    margin-top: auto;
+    font-size: 0.8125rem;
+    color: #3b82f6;
+    font-weight: 400;
+  }
+
+  /* ── Featured Card (Light - Newly Published) ── */
+  .featured-card.light {
+    display: flex;
+    flex-direction: column;
+    color: #111;
+  }
+  .visual-large {
+    flex: 1;
+    background: linear-gradient(135deg, #fef08a 0%, #dbeafe 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  .brand-overlay {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem;
+  }
+  .brand-overlay .logo-icon {
+    background: #111;
+    color: #fff;
+  }
+  .visual-text {
+    font-size: 3rem;
+    font-weight: 300;
+    max-width: 600px;
+    text-align: left;
+    line-height: 1.1;
+    width: 100%;
+  }
+  .content-bottom {
+    padding: 40px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .content-bottom h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 16px 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .grid-layout-2-1,
+    .grid-layout-1-2 {
+      grid-template-columns: 1fr;
+    }
+    .featured-card.dark {
+      grid-template-columns: 1fr;
+    }
+    .stacked-cards {
+      border-left: none;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    .stacked-cards.border-right {
+      border-right: none;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .visual-text {
+      font-size: 2rem;
+      margin-top: 40px;
+    }
+  }
+  @media (max-width: 600px) {
+    .small-card {
+      grid-template-columns: 1fr;
+    }
+    .img-placeholder {
+      height: 160px;
+      border-right: none;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+  }
+</style>

@@ -1,0 +1,226 @@
+---
+import Button from './Button';
+---
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">H</span>
+      <span class="logo-text">HotelWise</span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="nav desktop-only">
+      <a href="/features">Product</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/customers">Customers</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    
+    <div class="header-actions">
+      <a href="/contact" class="contact-link desktop-only">Contact Sales</a>
+      <span class="divider desktop-only"></span>
+      <Button href="/demo" variant="primary" client:load>Request your demo</Button>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-close hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu hidden">
+    <nav class="mobile-nav">
+      <a href="/features">Product</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/customers">Customers</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+      <hr class="mobile-divider" />
+      <a href="/contact">Contact Sales</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.querySelector('.mobile-menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const iconMenu = document.querySelector('.icon-menu');
+  const iconClose = document.querySelector('.icon-close');
+  const body = document.body;
+
+  if (toggleBtn && mobileMenu && iconMenu && iconClose) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenu.classList.contains('active');
+      
+      if (isExpanded) {
+        mobileMenu.classList.remove('active');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 300); // Wait for transition
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        body.style.overflow = '';
+      } else {
+        mobileMenu.classList.remove('hidden');
+        // trigger reflow
+        void mobileMenu.offsetWidth;
+        mobileMenu.classList.add('active');
+        iconMenu.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+    });
+  }
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: relative;
+    z-index: 101;
+    background: transparent;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--text-primary);
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .nav {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+  .nav a {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav a:hover {
+    color: var(--text-primary);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+  .contact-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border-color);
+  }
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--text-primary);
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-menu {
+    display: none;
+  }
+  
+  /* Utilities */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Strict Desktop Hiding */
+  @media (min-width: 1001px) {
+    .mobile-menu-toggle,
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1000px) {
+    .desktop-only {
+      display: none !important;
+    }
+    .mobile-menu-toggle {
+      display: flex;
+    }
+    .header-actions {
+      gap: 16px;
+    }
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+      display: block; /* Toggled via .hidden class from JS */
+      position: fixed;
+      top: 64px; /* Below header */
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 99;
+      padding: var(--spacing-xl) var(--spacing-lg);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      overflow-y: auto;
+    }
+    .mobile-menu.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+      padding-top: var(--spacing-md);
+    }
+    .mobile-nav a {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .mobile-divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 8px 0;
+    }
+  }
+
+  /* Handle very small screens */
+  @media (max-width: 480px) {
+    .logo-text {
+      display: none;
+    }
+  }
+</style>

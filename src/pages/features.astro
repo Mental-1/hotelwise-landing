@@ -1,0 +1,334 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button';
+
+const modules = [
+  {
+    id: 'backoffice',
+    title: '01 — BackOffice',
+    subtitle: 'The backbone every other module connects to',
+    description: "BackOffice handles every administrative task behind the scenes — ledger setup, user accounts, staff permissions, branch settings, and tax rules. It's the one place every other module is linked through, and the one place from which reports across the entire property can be pulled.",
+    features: [
+      { name: 'User roles & permissions', benefit: 'Control exactly what each staff member can see and do.' },
+      { name: 'Branch & department setup', benefit: 'Run multiple outlets or branches from one account.' },
+      { name: 'Tax & pricing rules', benefit: 'Apply consistent pricing across every sale, automatically.' },
+      { name: 'System-wide reporting', benefit: 'Pull reports from any module without leaving BackOffice.' },
+      { name: 'Shift management', benefit: 'Know who was on duty for every transaction.' },
+    ]
+  },
+  {
+    id: 'reservation',
+    title: '02 — Reservation',
+    subtitle: 'Half of the booking system — Front Desk is the other half',
+    description: "Reservation handles single and group bookings, holding a room and a rate before a guest ever arrives. Once that guest walks in, the details pass straight to Front Desk — nothing gets re-typed.",
+    features: [
+      { name: 'Single & group bookings', benefit: 'Book one room or a forty-room conference block the same way.' },
+      { name: 'Live room status board', benefit: 'See vacant, reserved, and occupied rooms at a glance.' },
+      { name: 'Deposit & rate capture', benefit: 'Lock in payment terms ahead of arrival.' },
+      { name: 'Automatic handoff to Front Desk', benefit: 'Guest details transfer over — nothing re-entered at check-in.' },
+    ]
+  },
+  {
+    id: 'front-desk',
+    title: '03 — Front Desk',
+    subtitle: 'The other half of the booking system',
+    description: "Front Desk checks an arriving guest in, opens their folio, and manages every transaction until they check out — payments, room changes, and charges from any other department.",
+    features: [
+      { name: 'One-tap check-in from a reservation', benefit: 'Turn a booking into an occupied room in seconds.' },
+      { name: 'Live guest folio', benefit: 'Post restaurant, bar, or spa charges straight to the room bill.' },
+      { name: 'Master & shared accounts', benefit: 'Bill a company or group account instead of splitting it room by room.' },
+      { name: 'Due-out alerts', benefit: "Know who's leaving today, before they reach the desk." },
+    ]
+  },
+  {
+    id: 'housekeeping',
+    title: '04 — Housekeeping',
+    subtitle: 'No guest checks into an unkempt room',
+    description: "Housekeeping manages every room's cleaning status — dirty, clean, or inspected — and feeds that status straight back to Front Desk. A room can't be sold again until housekeeping marks it ready.",
+    features: [
+      { name: 'Live room status', benefit: 'Front Desk always sees the true state of every room.' },
+      { name: 'Linked to checkout', benefit: 'No room can be re-sold until it is marked clean.' },
+      { name: 'Filter by block, floor, or room type', benefit: 'Coordinate cleaning crews across large properties.' },
+      { name: 'Follow-up alerts', benefit: 'Catch rooms left dirty too long.' },
+    ]
+  },
+  {
+    id: 'stores',
+    title: '05 — Stores',
+    subtitle: 'Never run out of stock without knowing first',
+    description: "Stores manages every inventory movement — purchase orders, goods receipt, and issuance — for every department that holds stock, from the kitchen to housekeeping. Track precise usage and catch shortages before they happen.",
+    features: [
+      { name: 'Order → receipt → issuance', benefit: 'Track every item from purchase to use, in one flow.' },
+      { name: 'Re-order level alerts', benefit: 'Get warned before stock actually runs out.' },
+      { name: 'Main store & sub-store tracking', benefit: 'See stock by kitchen, bar, or housekeeping separately.' },
+      { name: 'Usage & consumption reports', benefit: 'Spot waste or shrinkage early.' },
+    ]
+  },
+  {
+    id: 'restaurant',
+    title: '06 — Restaurant & Cashier Point',
+    subtitle: 'Order-taking and billing, without the stress',
+    description: "Waiters place orders on a touch screen, and the cashier point gives a faster, keyboard-based alternative for high-volume counters. Either way, charges can post straight to a guest's room — or settle on the spot.",
+    features: [
+      { name: 'Touch-screen ordering', benefit: 'Fewer mistakes, shorter ticket times.' },
+      { name: 'Multiple staff login methods', benefit: 'Staff log in fast; you control who can void or discount a bill.' },
+      { name: 'Bill-to-room posting', benefit: 'Restaurant and bar charges land straight on the guest folio.' },
+      { name: 'Keyboard-based cashier mode', benefit: 'A quicker option for busy, stand-alone counters.' },
+    ]
+  },
+  {
+    id: 'kitchen',
+    title: '07 — Kitchen Armor',
+    subtitle: 'The kitchen sees the order the moment it is placed',
+    description: "Every order placed at the till appears instantly on a screen in the kitchen, so chefs work from the same ticket the guest ordered — no shouted orders, no lost paper slips.",
+    features: [
+      { name: 'Real-time order display', benefit: 'Chefs see new orders the moment they are placed.' },
+      { name: 'Stage tracking', benefit: 'Know exactly where every dish is in preparation (pending, ready, cancelled).' },
+      { name: 'One-tap recall', benefit: 'Re-display an order if it is missed at pass.' },
+      { name: 'Direct line from till to kitchen', benefit: 'Fewer wrong or missing dishes reach the table.' },
+    ]
+  },
+  {
+    id: 'retail-pos',
+    title: '08 — Retail POS',
+    subtitle: 'Manage gift shops, boutiques, and spas seamlessly',
+    description: "Retail POS handles non-food and beverage sales across your property. Whether it's a guest buying souvenirs at the gift shop or booking a massage at the spa, transactions flow smoothly and can be settled immediately or charged to the room.",
+    features: [
+      { name: 'Barcode scanning', benefit: 'Ring up items quickly and accurately at the checkout counter.' },
+      { name: 'Inventory sync', benefit: 'Connects directly with Stores to keep retail stock levels accurate.' },
+      { name: 'Bill-to-room posting', benefit: 'Let guests charge retail purchases straight to their folio.' },
+      { name: 'Flexible pricing', benefit: 'Support discounts, promotions, and staff pricing effortlessly.' },
+      { name: 'Service bookings', benefit: 'Schedule and bill for spa treatments and other timed services.' },
+    ]
+  },
+  {
+    id: 'accounting',
+    title: '09 — Accounting',
+    subtitle: 'No second system to buy, configure, or reconcile',
+    description: "Every sale, purchase, and payment made anywhere else in HotelWise posts here automatically — to a full hotel-specific chart of accounts.",
+    features: [
+      { name: 'Automatic posting', benefit: 'No manual entries for routine sales and purchases from POS, Stores & Front Desk.' },
+      { name: 'Full chart of accounts', benefit: 'Bank, cash, stock, and receivables tracked to hotel-specific detail.' },
+      { name: 'Accounts payable & receivable', benefit: 'Track what you owe suppliers and what guests or companies owe you.' },
+      { name: 'Voucher-based transactions', benefit: 'Handle non-standard entries without breaking the automated flow.' },
+      { name: 'Fast financial reporting', benefit: 'Generate statements in minutes, not days, at month-end.' },
+    ]
+  }
+];
+---
+
+<Layout title="Features & Modules">
+  <Header />
+  <main class="features-page">
+    <div class="hero-wrapper">
+      <section class="features-hero container">
+        <h1>All-in-one hotel management.</h1>
+        <p>HotelWise helps hotel teams run reservations, front desk, restaurant, housekeeping, stores, and accounts — without switching between disconnected tools or re-entering the same information twice, in real time, every shift.</p>
+      </section>
+    </div>
+
+    <div class="container modules-container">
+      {modules.map((mod, index) => (
+        <section id={mod.id} class="module-section">
+          <div class="module-header">
+            <h2>{mod.title}</h2>
+            <p class="module-subtitle">{mod.subtitle}</p>
+            <p class="module-desc">{mod.description}</p>
+          </div>
+          <div class="module-content">
+            <div class="module-visual card">
+              <div class="visual-placeholder">
+                <span class="placeholder-icon">💻</span>
+                <span class="placeholder-text">{mod.title} Visualization</span>
+              </div>
+            </div>
+            <div class="module-features">
+              <table class="feature-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Benefit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mod.features.map(f => (
+                    <tr>
+                      <td>{f.name}</td>
+                      <td>{f.benefit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {index > 0 && index % 3 === 0 && (
+            <div class="cta-interruption">
+              <h3>Ready to see it in action?</h3>
+              <Button href="/demo" variant="primary" client:load>Book a Demo</Button>
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".features-hero h1", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" });
+  gsap.from(".features-hero p", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.1 });
+
+  const sections = gsap.utils.toArray('.module-section');
+  sections.forEach((sec: any) => {
+    gsap.from(sec, {
+      scrollTrigger: {
+        trigger: sec,
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+  });
+</script>
+
+<style>
+  .features-page {
+    padding-bottom: var(--spacing-xl);
+  }
+  .hero-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 80px 80px;
+    background-position: center top;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .features-hero {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .features-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .features-hero p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    text-wrap: balance;
+  }
+  .modules-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+  .module-section {
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+  }
+  .module-header {
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+  }
+  .module-header h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+  }
+  .module-subtitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+  .module-desc {
+    color: var(--text-secondary);
+  }
+  .module-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+  .module-visual {
+    aspect-ratio: 4/3;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .visual-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-tertiary);
+  }
+  .placeholder-icon {
+    font-size: 3rem;
+  }
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .feature-table th, .feature-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .feature-table th {
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+  }
+  .feature-table td {
+    color: var(--text-primary);
+  }
+  .feature-table tr td:first-child {
+    font-weight: 500;
+    width: 40%;
+  }
+  .cta-interruption {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  .cta-interruption h3 {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .module-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

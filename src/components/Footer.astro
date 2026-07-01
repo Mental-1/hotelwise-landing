@@ -1,0 +1,394 @@
+---
+---
+<div class="footer-spacer"></div>
+
+<div class="footer-cta-banner">
+  <div class="cta-glow"></div>
+  <div class="container cta-banner-inner">
+    <div class="cta-banner-content">
+      <div class="trusted-badge">
+        <span class="dot"></span> Trusted by Thousands
+      </div>
+      <h2>Interested in unifying your property, trying out<br/>the system or simply learning more?</h2>
+    </div>
+    <div class="cta-banner-link">
+      <a href="/demo">Learn Our Approach &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-contact">
+        <span class="contact-label">Reach out :</span>
+        <a href="mailto:hello@hotelwise.co.ke" class="contact-email">hello@hotelwise.co.ke &rarr;</a>
+      </div>
+      <div class="footer-newsletter">
+        <form class="newsletter-form">
+          <input type="email" placeholder="Email address" aria-label="Email address" />
+          <button type="button" aria-label="Subscribe">&rarr;</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer-divider"></div>
+
+    <div class="footer-middle">
+      <div class="footer-brand-desc">
+        <p>Next-generation cloud platform delivering unmatched speed, security, and scalability. Designed for hospitality. Engineered for the future.</p>
+      </div>
+      <div class="footer-links">
+        <div class="link-group">
+          <h4>PLATFORM</h4>
+          <a href="/features">Overview</a>
+          <a href="/features#front-desk">Features</a>
+          <a href="/features#accounting">Integrations</a>
+          <a href="/pricing">Pricing</a>
+        </div>
+        <div class="link-group">
+          <h4>RESOURCES</h4>
+          <a href="/resources#guides">Documentation</a>
+          <a href="/resources#blog">Blog</a>
+          <a href="/resources#faq">Community</a>
+          <a href="/contact">Support</a>
+        </div>
+        <div class="link-group">
+          <h4>COMPANY</h4>
+          <a href="/about">About Us</a>
+          <a href="/about#careers">Careers</a>
+          <a href="/customers">Press</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="link-group">
+          <h4>LEGAL</h4>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/cookie">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-divider"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-company-name">Suluhu Technologies</div>
+      <div class="footer-copyright">&copy; {new Date().getFullYear()} Suluhu Technologies. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // CTA Banner reveal
+  gsap.from(".footer-cta-banner", {
+    scrollTrigger: {
+      trigger: ".footer-cta-banner",
+      start: "top 90%",
+    },
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out"
+  });
+
+  // Footer sections staggered reveal
+  gsap.from(".footer-top", {
+    scrollTrigger: {
+      trigger: ".footer",
+      start: "top 85%",
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+
+  gsap.from(".footer-middle", {
+    scrollTrigger: {
+      trigger: ".footer-middle",
+      start: "top 90%",
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    ease: "power2.out",
+    delay: 0.1
+  });
+
+  gsap.from(".link-group", {
+    scrollTrigger: {
+      trigger: ".footer-links",
+      start: "top 90%",
+    },
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.08,
+    ease: "power2.out"
+  });
+
+  gsap.from(".footer-bottom", {
+    scrollTrigger: {
+      trigger: ".footer-bottom",
+      start: "top 95%",
+    },
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    ease: "power2.out"
+  });
+</script>
+
+<style>
+  /* Spacer between content and footer CTA */
+  .footer-spacer {
+    height: 120px;
+  }
+
+  /* ── CTA Banner ── */
+  .footer-cta-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1f2d 35%, #0c3547 55%, #063328 80%, #0a0a0a 100%);
+    color: white;
+    padding: 80px 0;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    top: -40%;
+    right: 15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.05) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-banner-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-xl);
+  }
+  .trusted-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--spacing-lg);
+  }
+  .trusted-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+  }
+  .cta-banner-content h2 {
+    font-size: 2.75rem;
+    font-weight: 300;
+    line-height: 1.25;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .cta-banner-link a {
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 24px;
+    border-radius: 6px;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    transform: translateX(20px);
+  }
+  .cta-banner-link a:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Footer Body ── */
+  .footer {
+    background: #faf8f5;
+    padding: 64px 0 40px;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .contact-label {
+    font-size: 0.875rem;
+    color: rgba(0,0,0,0.4);
+    font-weight: 400;
+  }
+  .contact-email {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover {
+    opacity: 0.7;
+  }
+  .footer-newsletter {
+    flex-shrink: 0;
+  }
+  .newsletter-form {
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding-bottom: 10px;
+    width: 280px;
+    gap: 8px;
+  }
+  .newsletter-form input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    outline: none;
+    font-family: inherit;
+  }
+  .newsletter-form input::placeholder {
+    color: rgba(0,0,0,0.25);
+  }
+  .newsletter-form button {
+    color: rgba(0,0,0,0.3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: color 0.2s;
+    padding: 0;
+  }
+  .newsletter-form button:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+    margin-bottom: 48px;
+  }
+
+  .footer-middle {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 64px;
+    padding-bottom: 48px;
+  }
+  .footer-brand-desc {
+    max-width: 300px;
+  }
+  .footer-brand-desc p {
+    font-size: 0.8125rem;
+    color: rgba(0,0,0,0.35);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .link-group h4 {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .link-group a {
+    color: rgba(0,0,0,0.4);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .link-group a:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-bottom-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+  }
+  .footer-company-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .footer-copyright {
+    font-size: 0.8125rem;
+    color: rgba(0,0,0,0.35);
+    font-weight: 400;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .footer-spacer {
+      height: 80px;
+    }
+    .footer-cta-banner {
+      padding: 56px 0;
+    }
+    .cta-banner-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-lg);
+    }
+    .cta-banner-content h2 {
+      font-size: 1.75rem;
+    }
+    .footer-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-xl);
+    }
+    .contact-email {
+      font-size: 1.5rem;
+    }
+    .newsletter-form {
+      width: 100%;
+    }
+    .footer-middle {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl);
+    }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+    }
+  }
+</style>

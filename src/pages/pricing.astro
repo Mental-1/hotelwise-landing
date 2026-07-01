@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button';
+---
+
+<Layout title="Pricing">
+  <Header />
+  <main class="pricing-page">
+    <section class="pricing-hero container">
+      <h1>Plans and features</h1>
+      <p>Configure HotelWise exactly as you need it. We price based on the modules you use and the size of your property.</p>
+    </section>
+
+    <section class="pricing-cards container">
+      <div class="pricing-grid">
+        <div class="pricing-card card">
+          <div class="card-header">
+            <h3>Boutique & Independent</h3>
+            <p class="price-context">Starting point for single properties</p>
+          </div>
+          <div class="card-body">
+            <p class="ideal-for">For independent hotels focused on core operations.</p>
+            <ul class="feature-list">
+              <li>✓ Front Desk & Reservations</li>
+              <li>✓ Basic Reporting</li>
+              <li>✓ 1 Outlet (Restaurant/Bar)</li>
+              <li>✓ Standard Support</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <Button href="/demo" variant="outline" className="w-full" client:load>Get a Custom Quote</Button>
+          </div>
+        </div>
+
+        <div class="pricing-card card featured">
+          <div class="featured-badge">Recommended</div>
+          <div class="card-header">
+            <h3>Full-Service Resort</h3>
+            <p class="price-context">Tailored for complex properties</p>
+          </div>
+          <div class="card-body">
+            <p class="ideal-for">For properties with multiple outlets, conferencing, and extensive stores.</p>
+            <ul class="feature-list">
+              <li>✓ Everything in Boutique</li>
+              <li>✓ Conferencing & Banqueting</li>
+              <li>✓ Advanced Stores & Inventory</li>
+              <li>✓ Full Accounting Module</li>
+              <li>✓ Priority Support</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <Button href="/demo" variant="primary" className="w-full" client:load>Get a Custom Quote</Button>
+          </div>
+        </div>
+
+        <div class="pricing-card card">
+          <div class="card-header">
+            <h3>Multi-Branch Group</h3>
+            <p class="price-context">Custom pricing per location</p>
+          </div>
+          <div class="card-body">
+            <p class="ideal-for">For hotel groups operating across multiple locations from one central office.</p>
+            <ul class="feature-list">
+              <li>✓ Everything in Full-Service</li>
+              <li>✓ Multi-branch consolidation</li>
+              <li>✓ Centralized Stores</li>
+              <li>✓ Group-level permissions</li>
+              <li>✓ Dedicated Account Manager</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <Button href="/demo" variant="outline" className="w-full" client:load>Contact Sales</Button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pricing-faq">
+        <h3 class="text-center">How pricing is calculated</h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>Number of Rooms</h4>
+            <p>Your property's capacity impacts the base license tier.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Selected Modules</h4>
+            <p>Only pay for the features your property actually uses.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Number of Branches</h4>
+            <p>Discounts apply as you scale HotelWise across multiple locations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  
+  gsap.from(".pricing-hero h1", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" });
+  gsap.from(".pricing-hero p", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out", delay: 0.1 });
+  gsap.from(".pricing-card", { y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out", delay: 0.2 });
+  gsap.from(".pricing-faq", { y: 40, opacity: 0, duration: 0.6, ease: "power2.out", delay: 0.5 });
+</script>
+
+<style>
+  .pricing-page {
+    padding: var(--spacing-xl) 0;
+  }
+  .pricing-hero {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: var(--spacing-xl);
+  }
+  .pricing-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  .pricing-hero p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .featured {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+  }
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-secondary);
+    color: var(--accent-primary);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--accent-primary);
+  }
+  .card-header {
+    margin-bottom: var(--spacing-md);
+  }
+  .card-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+  .price-context {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .card-body {
+    flex: 1;
+    margin-bottom: var(--spacing-lg);
+  }
+  .ideal-for {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    min-height: 40px;
+  }
+  .feature-list {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  .feature-list li {
+    margin-bottom: 8px;
+  }
+  :global(.w-full) {
+    width: 100%;
+  }
+  .pricing-faq {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+  }
+  .pricing-faq h3 {
+    margin-bottom: var(--spacing-lg);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  .faq-item h4 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .faq-item p {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

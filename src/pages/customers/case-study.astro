@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button';
+---
+
+<Layout title="Case Study | HotelWise">
+  <Header />
+  <main class="case-study-page">
+    <div class="container article-layout">
+      <!-- Back button -->
+      <a href="/customers" class="back-link">&larr; Back to all customers</a>
+      
+      <!-- Hero -->
+      <header class="case-header">
+        <div class="case-logo">
+          <span class="logo-placeholder" style="font-size: 2rem; font-weight: bold; color: var(--text-tertiary);">O</span>
+        </div>
+        <h1>How a 120-room resort eliminated 3 different software subscriptions and unified operations.</h1>
+        <p class="case-meta">Company: Oceanview Resort &nbsp;|&nbsp; Location: Mombasa &nbsp;|&nbsp; Rooms: 120</p>
+      </header>
+
+      <!-- Content -->
+      <article class="case-content">
+        <section>
+          <h2>The Problem</h2>
+          <p>Before switching to HotelWise, Oceanview Resort relied on a disjointed tech stack. The front desk used one legacy system for reservations, the restaurant used a separate Point of Sale tablet, and the finance team exported data into spreadsheets at the end of every week to manually reconcile the accounts.</p>
+          <p>This led to frequent double bookings, dropped restaurant charges that were never posted to guest folios, and hours of manual data entry every Monday morning. Staff were spending more time managing the software than serving the guests.</p>
+        </section>
+
+        <section>
+          <h2>The Solution</h2>
+          <p>Oceanview deployed HotelWise's full suite, focusing specifically on connecting their Front Desk, Restaurant POS, and Accounting modules into a single real-time flow.</p>
+          <blockquote>
+            "There's power in a single platform where you can do all your work. HotelWise is that single place."
+          </blockquote>
+          <p>Because HotelWise's restaurant POS posts charges directly to the active guest folio in real time, the front desk no longer needed to call the kitchen to verify bills at checkout. Furthermore, every transaction automatically routed to the correct ledger in the Accounting module, completely eliminating the need for weekly manual reconciliations.</p>
+        </section>
+
+        <section class="results-section card">
+          <h2>The Results</h2>
+          <div class="metrics-grid">
+            <div class="metric">
+              <span class="metric-value">3x</span>
+              <span class="metric-label">Faster checkout times</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">0</span>
+              <span class="metric-label">Lost restaurant charges</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">12 hrs</span>
+              <span class="metric-label">Saved on weekly reconciliation</span>
+            </div>
+          </div>
+        </section>
+      </article>
+      
+      <section class="cta-interruption text-center">
+        <h2>Ready to unify your property?</h2>
+        <div style="margin-top: 1.5rem;">
+          <Button href="/demo" variant="primary" client:load>Book a Demo</Button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  
+  gsap.from(".case-header", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" });
+  gsap.from(".case-content section", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out", delay: 0.2 });
+</script>
+
+<style>
+  .case-study-page {
+    padding: var(--spacing-xl) 0;
+  }
+  .article-layout {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xl);
+  }
+  .back-link:hover {
+    color: var(--text-primary);
+  }
+  .case-header {
+    margin-bottom: var(--spacing-xl);
+  }
+  .case-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  .case-header h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+  .case-meta {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .case-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+  .case-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .case-content p {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+  .case-content blockquote {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-primary);
+    padding-left: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+    text-align: left;
+  }
+  .results-section {
+    background: var(--bg-secondary);
+    border: none;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .metric-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .cta-interruption {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+  }
+  @media (max-width: 768px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>

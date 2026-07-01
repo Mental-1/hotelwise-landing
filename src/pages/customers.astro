@@ -1,0 +1,459 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button';
+
+// 12 placeholder case studies for the grid
+const caseStudies = [
+  { id: 1, type: "Hotel", name: "The Nairobi Landmark", quote: "HotelWise centralized our operations, cutting front desk waiting times by 40%.", imgColor: "#B5D5C5" },
+  { id: 2, type: "Resort", name: "Diani Beach Resort", quote: "Managing bookings across 5 different properties used to be a nightmare. Now it's a breeze.", imgColor: "#E3C9B8" },
+  { id: 3, type: "Lodge", name: "Mara Safari Lodge", quote: "Offline mode saves us when internet goes down in the bush. Incredible reliability.", imgColor: "#C5CBE3" },
+  { id: 4, type: "Boutique", name: "The Villa Karen", quote: "Guest profiles help us personalize every stay. We've seen a 30% jump in return guests.", imgColor: "#E3E0C5" },
+  { id: 5, type: "Chain", name: "City Plaza Hotels", quote: "Unified accounting across 10 locations. Month-end reconciliation takes hours, not days.", imgColor: "#E3B8B8" },
+  { id: 6, type: "Resort", name: "Zanzibar Ocean View", quote: "The POS connects instantly to guest folios. No more lost paper chits from the bar.", imgColor: "#C5E3D8" },
+  
+  // We'll inject the CTA banner after item 6 in the layout loop
+  
+  { id: 7, type: "Hotel", name: "Entebbe Transit Hotel", quote: "Automated night audits mean our staff can actually focus on late check-ins.", imgColor: "#D8C5E3" },
+  { id: 8, type: "Lodge", name: "Rift Valley Escapes", quote: "Housekeeping sync is flawless. Rooms are turned over 20% faster on average.", imgColor: "#E3D5B8" },
+  { id: 9, type: "Boutique", name: "Kigali Heights Inn", quote: "The cleanest, easiest interface we've ever used. Training new staff takes one afternoon.", imgColor: "#B8E3CD" },
+  { id: 10, type: "Hotel", name: "Mombasa Gateway", quote: "Channel manager integration means zero double bookings since we switched.", imgColor: "#D8E3B8" },
+  { id: 11, type: "Chain", name: "Serena Suites", quote: "Enterprise reporting gives our board real-time visibility into daily revenue.", imgColor: "#B8CBE3" },
+  { id: 12, type: "Resort", name: "Lake Naivasha Spa", quote: "Retail POS handles our spa and gift shop seamlessly alongside room billing.", imgColor: "#E3B8D5" },
+];
+---
+
+<Layout title="Customers & Case Studies">
+  <Header />
+  
+  <main class="customers-page">
+    
+    <!-- Hero Section -->
+    <section class="customers-hero">
+      <div class="hero-bg-video">
+        <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1542314831-c6a4d27ce668?auto=format&fit=crop&w=1920&q=80">
+          <source src="https://cdn.coverr.co/videos/coverr-hotel-room-with-a-view-4447/1080p.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-bg-overlay"></div>
+      </div>
+      <div class="container hero-content-inner">
+        <div class="hero-left">
+          <div class="hero-tag">★ Customer Stories</div>
+          <h1>Discover customer success powered by HotelWise</h1>
+          
+          <div class="hero-cta-wrapper">
+            <Button href="/demo" variant="primary">Book a Demo</Button>
+          </div>
+          
+          <div class="hero-trust">
+            <div class="trust-avatars">
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+            </div>
+            <p>Trusted by 100+ properties across East Africa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Area (Pale Background) -->
+    <section class="customers-content">
+      <div class="container">
+        
+        <!-- Filters Header -->
+        <div class="filters-header">
+          <h2>Their vision. Their numbers. Their words.</h2>
+          
+          <div class="filter-bar">
+            <div class="filter-group">
+              <label>Property Type</label>
+              <select>
+                <option>All Types</option>
+                <option>Hotel</option>
+                <option>Resort</option>
+                <option>Lodge</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Region</label>
+              <select>
+                <option>All Regions</option>
+                <option>Kenya</option>
+                <option>Tanzania</option>
+                <option>Uganda</option>
+                <option>Rwanda</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Modules</label>
+              <select>
+                <option>All Modules</option>
+                <option>Front Desk</option>
+                <option>POS</option>
+                <option>Accounting</option>
+              </select>
+            </div>
+            <div class="filter-group search-group">
+              <input type="text" placeholder="Search customers..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Area -->
+        <div class="cases-grid">
+          {caseStudies.map((caseItem, index) => {
+            return (
+              <>
+                <div class="case-card card">
+                  <div class="case-image" style={`background-color: ${caseItem.imgColor};`}>
+                    <span class="case-type-badge">{caseItem.type}</span>
+                  </div>
+                  <div class="case-body">
+                    <p class="case-quote">"{caseItem.quote}"</p>
+                    <a href="/customers/case-study" class="read-story">Read story &rarr;</a>
+                  </div>
+                </div>
+
+                {/* Inject CTA Banner after 6 items */}
+                {index === 5 && (
+                  <div class="inline-cta-banner">
+                    <div class="inline-cta-content">
+                      <h3>Want the same success? Experience the full potential of HotelWise.</h3>
+                      <Button href="/demo" variant="primary">Book a Demo</Button>
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero animations
+  gsap.from(".hero-left > *", { 
+    y: 20, 
+    opacity: 0, 
+    duration: 0.6, 
+    stagger: 0.1, 
+    ease: "power2.out" 
+  });
+
+  // Filter animations
+  gsap.from(".filters-header", {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    delay: 0.4,
+    ease: "power2.out"
+  });
+
+  // Grid animations
+  gsap.from(".case-card, .inline-cta-banner", {
+    scrollTrigger: {
+      trigger: ".cases-grid",
+      start: "top 85%",
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.05,
+    ease: "power2.out"
+  });
+</script>
+
+<style>
+  /* ── Page Base ── */
+  .customers-page {
+    /* The body of the page is a pale cream/yellow matching the reference */
+    background-color: #FAF9F5; 
+    min-height: 100vh;
+  }
+
+  /* ── Hero Section ── */
+  .customers-hero {
+    position: relative;
+    padding: 90px 0; 
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .hero-bg-video {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+  .hero-bg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(214, 233, 255, 0.45); /* Light blue with higher transparency */
+    z-index: 2;
+  }
+  .hero-content-inner {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-left {
+    max-width: 700px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.6);
+    padding: 6px 12px;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+  }
+  .hero-left h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 400;
+    color: #111;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero-cta-wrapper {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .trust-avatars {
+    display: flex;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid rgba(255,255,255,0.4);
+    margin-left: -12px;
+  }
+  .avatar:first-child { margin-left: 0; background: #444; }
+  .avatar:nth-child(2) { background: #666; }
+  .avatar:nth-child(3) { background: #888; }
+  
+  .hero-trust p {
+    font-size: 0.875rem;
+    color: #111;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* ── Content & Filters ── */
+  .customers-content {
+    padding: 80px 0; 
+  }
+  .filters-header {
+    margin-bottom: 48px;
+  }
+  .filters-header h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #111;
+  }
+  .filter-bar {
+    display: flex;
+    gap: 16px;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .filter-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    padding-right: 16px;
+  }
+  .filter-group.search-group {
+    border-right: none;
+    padding-right: 0;
+    justify-content: flex-end;
+  }
+  .filter-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .filter-group select,
+  .filter-group input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: #111;
+    padding: 8px 0;
+    outline: none;
+    cursor: pointer;
+  }
+  .filter-group input {
+    cursor: text;
+  }
+
+  /* ── Cases Grid ── */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  
+  .case-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Remove default card padding */
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  }
+  .case-image {
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+  .case-type-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #111;
+  }
+  .case-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .case-quote {
+    font-size: 0.9375rem;
+    color: #333;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex: 1;
+  }
+  .read-story {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2b70f0; /* Action blue */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .read-story:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Inline CTA Banner ── */
+  .inline-cta-banner {
+    grid-column: 1 / -1; /* Span all 4 columns */
+    background: linear-gradient(135deg, #a7cbf6, #bfdeff);
+    border-radius: 8px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 0;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .inline-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 32px;
+  }
+  .inline-cta-content h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    flex: 1;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1200px) {
+    .cases-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 900px) {
+    .customers-content {
+      padding-top: 64px;
+    }
+    .cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .filter-bar {
+      flex-wrap: wrap;
+    }
+    .filter-group {
+      min-width: 45%;
+      border-right: none;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 8px;
+    }
+    .inline-cta-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  @media (max-width: 600px) {
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+    .filter-group {
+      min-width: 100%;
+    }
+    .hero-left h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
